@@ -22,7 +22,7 @@ function play() {
         computer = "lézard";
     }
     else {
-        computer = "spoke";
+        computer = "spock";
     }
     compare(computer);
 }
@@ -39,97 +39,117 @@ function compare(computer) {
     else {
         if (computer === "pierre") {
             msg = "L'ordinateur a choisi la Pierre. ";
-            if (surfer === "feuille") {
-                msg += "Vous avez choisi la Feuille. La Feuille enveloppe la Pierre, " + win;
+            if (surfer === "feuille" || surfer === "spock") {
+                if (surfer === "feuille") {
+                    msg += "Vous avez choisi la Feuille. La Feuille enveloppe la Pierre, ";
+                }
+                else {
+                    msg += "Vous avez choisi spock. La Feuille désavoue Spock, ";
+                }
+                msg += win;
                 winnerS += 1;
             }
-            else if (surfer === "ciseaux") {
-                msg += "Vous avez choisi les Ciseaux. La Pierre casse les Ciseaux," + lost;
+            else {
+                if (surfer === "lézard") {
+                    msg += "Vous avez choisi le Lézard. La Pierre écrase le Lézard, ";
+                }
+                else {
+                    msg += "Vous avez choisi spock. Spock désintègre la Pierre, ";
+                }
+                msg += lost;
                 winnerC += 1;
-            }
-            else if (surfer === "lézard") {
-                msg += "Vous avez choisi le Lézard. La Pierre écrase le Lézard, " + lost;
-                winnerC += 1;
-            }
-            else if (surfer === "spoke") {
-                msg += "Vous avez choisi Spoke. Spoke détruit la Pierre, " + win;
-                winnerS += 1;
             }
         }
         else if (computer === "feuille") {
             msg = "L'ordinateur a choisi la Feuille. ";
-            if (surfer === "pierre") {
-                msg += "Vous avez choisi la Pierre. La Feuille enveloppe la Pierre, " + lost;
-                winnerC += 1;
-            }
-            else if (surfer === "ciseaux") {
-                msg += "Vous avez choisi les Ciseaux. Les Ciseaux coupent la Feuille, " + win;
+            if (surfer === "ciseaux" || surfer === "lézard") {
+                if (surfer === "ciseaux") {
+                    msg += "Vous avez choisi la Feuille. Les Ciseaux coupent la Feuille, ";
+                }
+                else {
+                    msg += "Vous avez choisi le Lézard. Le Lézard mange la Feuille, ";
+                }
+                msg += win;
                 winnerS += 1;
             }
-            else if (surfer === "lézard") {
-                msg += "Vous avez choisi le Lézard. Le Lézard mange la Feuille, " + win;
-                winnerS += 1;
-            }
-            else if (surfer === "spoke") {
-                msg += "Vous avez choisi Spoke. La Feuille désavoue Spoke, " + lost;
+            else {
+                if (surfer === "pierre") {
+                    msg += "Vous avez choisi la Pierre. La Feuille enveloppe la Pierre, ";
+                }
+                else {
+                    msg += "Vous avez choisi Spock. La Feuille désavoue spock, ";
+                }
+                msg += lost;
                 winnerC += 1;
             }
         }
         else if (computer === "ciseaux") {
             msg = "L'ordinateur a choisi les Ciseaux. ";
-            if (surfer === "pierre") {
-                msg += "Vous avez choisi la Pierre. La Pierre casse les Ciseaux, " + win;
+            if (surfer === "pierre" || surfer === "spock") {
+                if (surfer === "pierre") {
+                    msg += "Vous avez choisi la Pierre. La Pierre casse les Ciseaux, ";
+                }
+                else {
+                    msg += "Vous avez choisi Spock. Spock détruit les Ciseaux, ";
+                }
+                msg += win;
                 winnerS += 1;
             }
-            else if (surfer === "feuille") {
-                msg += "Vous avez choisi la Feuille. Les Ciseaux coupent la Feuille, " + lost;
+            else {
+                if (surfer === "feuille") {
+                    msg += "Vous avez choisi la Feuille. Les Ciseaux coupent la Feuille, ";
+                }
+                else {
+                    msg += "Vous avez choisi le Lézard. Les Ciseaux décapitent le Lézard, ";
+                }
+                msg += lost;
                 winnerC += 1;
-            }
-            else if (surfer === "lézard") {
-                msg += "Vous avez choisi le Lézard. Les Ciseaux décapitent le Lézard, " + lost;
-                winnerC += 1;
-            }
-            else if (surfer === "spoke") {
-                msg += "Vous avez choisi Spoke. Spoke détruit les Ciseaux, " + win;
-                winnerS += 1;
             }
         }
         else if (computer === "lézard") {
             msg = "L'ordinateur a choisi le Lézard. ";
-            if (surfer === "pierre") {
-                msg += "Vous avez choisi la Pierre. La Pierre écrase le Lézard, " + win;
+            if (surfer === "pierre" || surfer === "ciseaux") {
+                if (surfer === "pierre") {
+                    msg += "Vous avez choisi la Pierre. La Pierre écrase le Lézard, ";
+                }
+                else {
+                    msg += "Vous avez choisi les Ciseaux. Les Ciseaux décapitent le Lézard, ";
+                }
+                msg += win;
                 winnerS += 1;
             }
-            else if (surfer === "feuille") {
-                msg += "Vous avez choisi la Feuille. Le Lézard mange la Feuille, " + lost;
-                winnerC += 1;
-            }
-            else if (surfer === "ciseaux") {
-                msg += "Vous avez choisi les Ciseaux. Les Ciseaux décapitent le Lézard, " + win;
-                winnerS += 1;
-            }
-            else if (surfer === "spoke") {
-                msg += "Vous avez choisi Spoke. Le Lézard empoisonne Spoke, " + lost;
+            else {
+                if (surfer === "feuille") {
+                    msg += "Vous avez choisi la Feuille. Le Lézard mange la Feuille, ";
+                }
+                else {
+                    msg += "Vous avez choisi Spock. Le Lézard empoisonne Spock, ";
+                }
+                msg += lost;
                 winnerC += 1;
             }
         }
-        else if (computer === "spoke") {
-            msg = "L'ordinateur a choisi Spoke. ";
-            if (surfer === "pierre") {
-                msg += "Vous avez choisi la Pierre. Spoke détruit la Pierre, " + lost;
-                winnerC += 1;
-            }
-            else if (surfer === "feuille") {
-                msg += "Vous avez choisi la Feuille. La Feuille désavoue Spoke, " + win;
+        else if (computer === "spock") {
+            msg = "L'ordinateur a choisi Spock. ";
+            if (surfer === "feuille" || surfer === "lézard") {
+                if (surfer === "feuille") {
+                    msg += "Vous avez choisi la Feuille. La Feuille désavoue Spock, ";
+                }
+                else {
+                    msg += "Vous avez choisi le Lézard. Le Lézard empoisonne Spock, ";
+                }
+                msg += win;
                 winnerS += 1;
             }
-            else if (surfer === "ciseaux") {
-                msg += "Vous avez choisi les Ciseaux. Spoke écrase les Ciseaux, " + lost;
+            else {
+                if (surfer === "pierre") {
+                    msg += "Vous avez choisi la Pierre. Spock désintègre la Pierre, ";
+                }
+                else {
+                    msg += "Vous avez choisi les Ciseaux. Spock écrabouille les Ciseaux, ";
+                }
+                msg += lost;
                 winnerC += 1;
-            }
-            else if (surfer === "lézard") {
-                msg += "Vous avez choisi le Lézard. Le Lézard empoisonne Spoke, " + win;
-                winnerS += 1;
             }
         }
     }
